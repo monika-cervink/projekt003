@@ -227,10 +227,10 @@ if __name__ == "__main__":                  # uživatelské rozhraní se vstupy
             if 78 > volba_okres > 0:
                 break
             else:
-                print("Zadej číslo od 1 do 77!")
+                print("Zadejte číslo od 1 do 77!")
 
         except ValueError:
-            print("Zadej číslo od 1 do 77!")
+            print("Zadejte číslo od 1 do 77!")
 
     while True:
         nazev = input("Zadejte název souboru, do kterého chcete výsledky uložit: ")
@@ -249,3 +249,4 @@ if __name__ == "__main__":                  # uživatelské rozhraní se vstupy
     # provede hlavní funkci a vytiskne náhled do terminálu
 
     print("Soubor uložen.")
+
