@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 import csv
 import re
-from prettytable import from_csv, PrettyTable
+from prettytable import PrettyTable
 
 
 def stazeni_html(adresa_stranky: str):
@@ -165,20 +165,6 @@ def uloz_data_do_csv(odkaz_okresu: str, nazev_souboru: str):
     return nazev_souboru
 
 
-def nacti_soubor(nazev_souboru: str):
-    """Načte vytvořený csv soubor a zobrazí ho jako jednoduchou tabulku.
-    Slouží pro rychlý náhled v terminálu."""
-
-    try:
-        with open(nazev_souboru) as file:
-            tabulka = from_csv(file)
-
-        return print(tabulka)
-
-    except:
-        print("Soubor nelze načíst!")
-
-
 def slovnik_okresy() -> dict:
     """Vytvoří slovník, kde klíče jsou názvy okresů a hodnoty jsou odkazy na daný okres.
     Slouží pro výběr okresu uživatelem a vybraný odkaz okresu pak vstupuje do hlavní funkce"""
@@ -245,8 +231,7 @@ if __name__ == "__main__":                  # uživatelské rozhraní se vstupy
     zvoleny_okres = slovnik_okresy()[ciselny_seznam_okresu[volba_okres-1][1]]
     # vytáhne příslušnou URL
 
-    nacti_soubor(uloz_data_do_csv(zvoleny_okres, nazev))
-    # provede hlavní funkci a vytiskne náhled do terminálu
+    uloz_data_do_csv(zvoleny_okres, nazev)
+    # provede hlavní funkci
 
     print("Soubor uložen.")
-
